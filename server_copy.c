@@ -100,5 +100,14 @@ int main(int argc, char* argv[])
 
 	close(socket_descriptor);
 
+	//we can traverse the whole LL of threads to join them all together
+        threadsLL* finalPTR = front;
+        while(finalPTR != NULL)
+        {
+                pthread_join(finalPTR->name, NULL);
+                printf("Join Successful\n");
+                finalPTR = finalPTR->next;
+        }
+	
 	return 0;
 }
